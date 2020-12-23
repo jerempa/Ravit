@@ -38,8 +38,7 @@ function calculateHorses(playedCards: Card[], trapCards: TrapCard[]) {
 	return horses;
 }
 
-export function useGame() {
-	const columns = 10;
+export function useGame({ columns }: { columns: number }) {
 	const [{ playedCards, deck, trapCards }, setState] = useState<GameState>(
 		initialState
 	);

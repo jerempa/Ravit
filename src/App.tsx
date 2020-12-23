@@ -6,8 +6,12 @@ import './App.css';
 import { useGame } from './useGame';
 import Card from './Card';
 
+const columns = 8;
+
 export default function App() {
-	const { playedCards, playTurn, reset, trapCards, horses, deck } = useGame();
+	const { playedCards, playTurn, reset, trapCards, horses, deck } = useGame({
+		columns,
+	});
 	const [isAutoplaying, setIsAutoplaying] = useState<NodeJS.Timeout | null>(
 		null
 	);
@@ -37,7 +41,8 @@ export default function App() {
 		}
 	}
 
-	const gameOver = horses.some((h) => h.position === 10) || deck.length === 0;
+	const gameOver =
+		horses.some((h) => h.position === columns) || deck.length === 0;
 
 	useEffect(() => {
 		if (gameOver) {
@@ -75,7 +80,7 @@ export default function App() {
 				</span>
 			) : null}
 			<div style={{ display: 'flex' }}>
-				{range(0, 11).map((n) => (
+				{range(0, columns + 1).map((n) => (
 					<div className="column-header">{n}</div>
 				))}
 			</div>
