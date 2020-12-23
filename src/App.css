@@ -1,38 +1,36 @@
-.App {
-  text-align: center;
+body {
+	margin: 0.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+	height: 125px;
+	width: 100px;
+	border: 1px solid black;
+	box-sizing: border-box;
+	transition: transform 100ms ease-out;
+	font-size: 3rem;
+	margin: 10px;
+	padding: 5px;
+	border-radius: 3px;
+	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+		0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+		0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+		0 100px 80px rgba(0, 0, 0, 0.12);
+	background-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.column-header {
+	width: 100px;
+	box-sizing: border-box;
+	text-align: center;
+	border-bottom: 1px solid black;
+	margin: 10px;
+	padding: 0.5rem;
+	font-size: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.played-cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 100px);
+	gap: 0.5rem;
 }
