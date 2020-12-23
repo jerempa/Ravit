@@ -59,7 +59,7 @@ export function useGame() {
 				trapCards[trapCardPosition] = newTrapCard;
 			} else {
 				const drawnCard = deck[deck.length - 1];
-				playedCards = drawnCard ? [...playedCards, drawnCard] : playedCards;
+				playedCards = drawnCard ? [drawnCard, ...playedCards] : playedCards;
 				deck = deck.slice(0, -1);
 			}
 
