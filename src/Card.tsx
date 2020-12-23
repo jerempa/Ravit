@@ -2,8 +2,8 @@ import { Suit } from './deck';
 
 const emojiSuitMap = {
 	[Suit.clubs]: '♣️',
-	[Suit.diamonds]: '♦️',
-	[Suit.hearts]: '❤️',
+	[Suit.diamonds]: <span style={{ color: 'red' }}>♦️</span>,
+	[Suit.hearts]: <span style={{ color: 'red' }}>♥️</span>,
 	[Suit.spades]: '♠️',
 };
 
