@@ -2,8 +2,8 @@ import { Suit } from './deck';
 
 const emojiSuitMap = {
 	[Suit.clubs]: '♣️',
-	[Suit.diamonds]: <span style={{ color: 'red' }}>♦️</span>,
-	[Suit.hearts]: <span style={{ color: 'red' }}>♥️</span>,
+	[Suit.diamonds]: '♦️',
+	[Suit.hearts]: '♥️',
 	[Suit.spades]: '♠️',
 };
 
@@ -25,6 +25,7 @@ export default function Card({ suit, value, style, shown = true }: PropTypes) {
 		<div
 			className="card"
 			style={{
+				color: suit === Suit.diamonds || suit === Suit.hearts ? 'red' : 'black',
 				...style,
 			}}
 		>
