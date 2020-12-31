@@ -58,7 +58,7 @@ export function useGame({ columns }: { columns: number }) {
 				trapCards[trapCardPosition] = newTrapCard;
 			} else {
 				const drawnCard = deck[deck.length - 1];
-				playedCards = drawnCard ? [drawnCard, ...playedCards] : playedCards;
+				playedCards = drawnCard ? [...playedCards, drawnCard] : playedCards;
 				deck = deck.slice(0, -1);
 			}
 

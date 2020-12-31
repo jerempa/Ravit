@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
-import { range, toNumber } from 'lodash';
+import { useRef, useEffect } from 'react';
+import { range } from 'lodash';
 
 import './App.css';
 
 import { useGame } from './useGame';
+import useAutoplay from './useAutoplay';
 import Card from './Card';
 
 const columns = 8;
@@ -12,34 +13,14 @@ export default function App() {
 	const { playedCards, playTurn, reset, trapCards, horses, deck } = useGame({
 		columns,
 	});
-	const [isAutoplaying, setIsAutoplaying] = useState<NodeJS.Timeout | null>(
-		null
-	);
 	const intervalRef = useRef<HTMLInputElement>(null);
 
-	const stopAutoplaying = useCallback(
-		function stopAutoplaying() {
-			clearInterval(isAutoplaying as NodeJS.Timeout);
-			setIsAutoplaying(null);
-		},
-		[isAutoplaying]
-	);
-
-	useEffect(() => {
-		if (deck.length === 0) {
-			stopAutoplaying();
-		}
-	}, [deck.length, stopAutoplaying]);
-
-	function autoplay() {
-		if (isAutoplaying) {
-			stopAutoplaying();
-		} else {
-			setIsAutoplaying(
-				setInterval(playTurn, toNumber(intervalRef.current!.value))
-			);
-		}
-	}
+	const {
+		autoplay,
+		isAutoplaying,
+		resetAutoplaying,
+		stopAutoplaying,
+	} = useAutoplay(playedCards, playTurn, deck, intervalRef);
 
 	const gameOver =
 		horses.some((h) => h.position === columns) || deck.length === 0;
@@ -58,7 +39,7 @@ export default function App() {
 			<button
 				onClick={() => {
 					reset();
-					stopAutoplaying();
+					resetAutoplaying();
 				}}
 			>
 				reset
@@ -66,10 +47,10 @@ export default function App() {
 			<input
 				type="number"
 				ref={intervalRef}
-				defaultValue="750"
+				defaultValue="1500"
 				disabled={!!isAutoplaying}
 			/>
-			<button onClick={autoplay}>{isAutoplaying ? 'stop' : 'autoplay'}</button>
+			<button onClick={autoplay}>{isAutoplaying ? 'stop' : 'play'}</button>
 			{gameOver ? (
 				<span
 					style={{
