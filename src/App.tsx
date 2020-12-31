@@ -5,7 +5,7 @@ import './App.css';
 
 import { useGame } from './useGame';
 import useAutoplay from './useAutoplay';
-import Card from './Card';
+import Card, { suitColor, emojiSuitMap } from './Card';
 
 const columns = 8;
 
@@ -24,6 +24,8 @@ export default function App() {
 
 	const gameOver =
 		horses.some((h) => h.position === columns) || deck.length === 0;
+
+	const winner = horses.find((h) => h.position === columns);
 
 	useEffect(() => {
 		if (gameOver) {
@@ -57,7 +59,13 @@ export default function App() {
 						fontSize: '2rem',
 					}}
 				>
-					Game over!
+					{winner ? (
+						<span style={{ color: suitColor(winner.suit) }}>
+							{emojiSuitMap[winner?.suit]} win!
+						</span>
+					) : (
+						'Game over!'
+					)}
 				</span>
 			) : null}
 			<div style={{ display: 'flex' }}>

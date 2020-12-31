@@ -1,6 +1,6 @@
 import { Suit } from './deck';
 
-const emojiSuitMap = {
+export const emojiSuitMap = {
 	[Suit.clubs]: '♣️',
 	[Suit.diamonds]: '♦️',
 	[Suit.hearts]: '♥️',
@@ -16,6 +16,10 @@ interface PropTypes {
 	shown?: boolean;
 }
 
+export function suitColor(suit: Suit) {
+	return suit === Suit.diamonds || suit === Suit.hearts ? 'red' : 'black';
+}
+
 function cardValue(value: CardValue): CardValue {
 	return value === 11 ? 'J' : value === 12 ? 'Q' : value === 13 ? 'K' : value;
 }
@@ -25,7 +29,7 @@ export default function Card({ suit, value, style, shown = true }: PropTypes) {
 		<div
 			className="card"
 			style={{
-				color: suit === Suit.diamonds || suit === Suit.hearts ? 'red' : 'black',
+				color: suitColor(suit),
 				...style,
 			}}
 		>
