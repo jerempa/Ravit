@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Results.css';
 import { Suit } from './deck';
+import Card, { suitColor, emojiSuitMap } from './Card';
+
 
 
 interface Player {
@@ -26,7 +28,7 @@ function Results({winner, color, players}: ResultsProps) {
         <ul>
           {players.map((player, index) => (
             <li key={index}>
-                {player.playerName} ({player.suit}) {player.suit === winner ? `shares ${player.bet * 2} hörppys` : `drinks ${player.bet} hörppys`}</li>
+                {player.playerName} ({emojiSuitMap[player.suit]}) {player.suit === winner ? `shares ${player.bet * 2} hörppys` : `drinks ${player.bet} hörppys`}</li>
           ))}
         </ul>
       </div>
