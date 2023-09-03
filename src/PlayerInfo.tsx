@@ -3,15 +3,22 @@ import './PlayerInfo.css';
 import Card, { suitColor, emojiSuitMap } from './Card';
 
 
+enum Suit {
+  clubs = '♣️',
+  diamonds = '♦️',
+  hearts = '♥️',
+  spades = '♠️',
+}
+
 interface Player {
   playerName: string;
-  suit: string;
+  suit: Suit;
   bet: string;
 }
 
 function PlayerInfo() {
   const [playerName, setPlayerName] = useState('');
-  const [suit, setSuit] = useState('');
+  const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
   const [bet, setBet] = useState('');
   const [players, setPlayers] = useState<Player[]>([]);
 
@@ -26,7 +33,7 @@ function PlayerInfo() {
 
     setPlayers([...players, newPlayer]);
     setPlayerName('');
-    setSuit('');
+    setSuit(Suit.clubs);
     setBet('');
   };
 
@@ -46,12 +53,15 @@ function PlayerInfo() {
         />
       </div>
       <div>
-        <input
-          type="text"
-          placeholder="Suit"
+        <select
           value={suit}
-          onChange={(e) => setSuit(e.target.value)}
-        />
+          onChange={(e) => setSuit(e.target.value as Suit)}
+        >
+          <option value={Suit.clubs}>♣️ Clubs</option>
+          <option value={Suit.diamonds}>♦️ Diamonds</option>
+          <option value={Suit.hearts}>♥️ Hearts</option>
+          <option value={Suit.spades}>♠️ Spades</option>
+        </select>
       </div>
       <div>
         <input
