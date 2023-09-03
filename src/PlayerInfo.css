@@ -1,5 +1,13 @@
 .player-info {
     position: absolute;
     left:1150px; 
-    top:20px;
+    top:400px;
+    font-size: 45px;
+}
+
+.input-boxes {
+    position: flex;
+    margin-left: 1150px;
+    margin-top: 10px;
+    font-size: 45px;
 }

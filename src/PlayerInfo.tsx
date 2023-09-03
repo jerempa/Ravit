@@ -53,10 +53,10 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
   };
 
   return (
-    <div className="player-info">
-      <h2>Enter players</h2>
+    <div>
+      <h2 style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "40px"}}>Enter players</h2>
       <div>
-        <input
+        <input style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "105px"}}
           type="text"
           placeholder="Player name"
           value={playerName}
@@ -64,7 +64,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <select
+        <select style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "170px"}}
           value={suit}
           onChange={(e) => setSuit(e.target.value as Suit)}
         >
@@ -75,7 +75,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </select>
       </div>
       <div>
-        <input
+        <input style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "235px"}}
           type="number"
           defaultValue= "1"
           value={bet}
@@ -83,10 +83,10 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <button onClick={handleSubmit}>Enter Player</button>
+        <button onClick={handleSubmit} style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "300px"}}>Enter Player</button>
       </div>
       {players.length > 0 && (
-        <div>
+        <div className="player-info">
           <h3>Players:</h3>
           <ul>
             {players.map((player, index) => (
@@ -98,7 +98,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </div>
       )}
             <div>
-            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none' }}>
+            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "375px"}}>
   Reset Players
 </button>
       </div>
