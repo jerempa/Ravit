@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './PlayerInfo.css';
 import Card, { suitColor, emojiSuitMap } from './Card';
+import Results from './Results';
+
 
 
 enum Suit {
@@ -16,7 +18,11 @@ interface Player {
   bet: number;
 }
 
-function PlayerInfo() {
+interface PlayerInfoProps {
+  onPlayerSubmit: (player: Player) => void;
+}
+
+function PlayerInfo({ onPlayerSubmit }: PlayerInfoProps) {
   const [playerName, setPlayerName] = useState('');
   const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
   const [bet, setBet] = useState(1);
@@ -30,12 +36,15 @@ function PlayerInfo() {
       bet,
     };
 
+    onPlayerSubmit(newPlayer);
 
     setPlayers([...players, newPlayer]);
     setPlayerName('');
     setSuit(Suit.clubs);
     setBet(1);
+
   };
+
 
   const resetPlayers = () => {
     setPlayers([]);

@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
 import './Results.css';
 
-interface ResultsProps {
-    winner: string; 
+enum Suit {
+	clubs = '♣️',
+	diamonds = '♦️',
+	hearts = '♥️',
+	spades = '♠️',
   }
 
-function Results({winner}: ResultsProps) {
+interface Player {
+	playerName: string;
+	suit: Suit;
+	bet: number;
+  }
+
+interface ResultsProps {
+    winner: string;
+    color: string;
+    players: Player[]; 
+  }
+
+function Results({winner, color, players}: ResultsProps) {
 
   return (
     <div className="results">
         <h2> Results </h2>
-        <h3> Winner: {winner}</h3>
+        <h3 style={{ color: color }}> Winner: {winner}</h3>
+        <div>
+        <h4>Players:</h4>
+        <ul>
+          {players.map((player, index) => (
+            <li key={index}>
+              {player.playerName}, {player.suit}, {player.bet}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>)
 }
 

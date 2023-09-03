@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { range } from 'lodash';
 
 import './App.css';
@@ -9,6 +9,19 @@ import Card, { suitColor, emojiSuitMap } from './Card';
 import PlayerInfo from './PlayerInfo';
 import Results from './Results';
 
+
+enum Suit {
+	clubs = '♣️',
+	diamonds = '♦️',
+	hearts = '♥️',
+	spades = '♠️',
+  }
+
+interface Player {
+	playerName: string;
+	suit: Suit;
+	bet: number;
+  }
 
 const columns = 8;
 
@@ -37,10 +50,16 @@ export default function App() {
 		}
 	}, [gameOver, stopAutoplaying]);
 
+	const [players, setPlayers] = useState<Player[]>([]);
+
+	const handlePlayerSubmit = (newPlayer: Player) => {
+		setPlayers([...players, newPlayer]);
+	  };
+
 	return (
 		<div className="board">
 			<button onClick={playTurn} disabled={!!isAutoplaying}>
-				play turn
+				Play turn
 			</button>
 			<button
 				onClick={() => {
@@ -48,7 +67,7 @@ export default function App() {
 					resetAutoplaying();
 				}}
 			>
-				reset
+				Reset
 			</button>
 			<input
 				type="number"
@@ -56,7 +75,14 @@ export default function App() {
 				defaultValue="1500"
 				disabled={!!isAutoplaying}
 			/>
-			<button onClick={autoplay}>{isAutoplaying ? 'stop' : 'play'}</button>
+			<button onClick={autoplay}>{isAutoplaying ? 'Stop' : 'Play'}</button>
+			<button
+				onClick={() => {
+					resetAutoplaying();
+				}}
+			>
+				Stop audio
+			</button>
 			{gameOver ? (
 				<span
 					style={{
@@ -70,7 +96,8 @@ export default function App() {
 					) : (
 						'Game over!'
 					)}
-					{winner && <Results winner = {emojiSuitMap[winner?.suit]} />}
+					{winner && <Results winner = {emojiSuitMap[winner?.suit]} color = {suitColor(winner.suit) } players={players}/>
+					}
 				</span>
 			) : null}
 			<div style={{ display: 'flex' }}>
@@ -79,7 +106,7 @@ export default function App() {
 				))}
 			</div>
 			<div className="Players">
-				<PlayerInfo />
+			<PlayerInfo onPlayerSubmit={handlePlayerSubmit} />
 			</div>
 			{horses.map((h) => (
 				<Card
