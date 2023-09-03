@@ -6,6 +6,7 @@ import './App.css';
 import { useGame } from './useGame';
 import useAutoplay from './useAutoplay';
 import Card, { suitColor, emojiSuitMap } from './Card';
+import PlayerInfo from './PlayerInfo';
 
 const columns = 8;
 
@@ -14,6 +15,7 @@ export default function App() {
 		columns,
 	});
 	const intervalRef = useRef<HTMLInputElement>(null);
+
 
 	const {
 		autoplay,
@@ -73,6 +75,9 @@ export default function App() {
 					<div className="column-header">{n}</div>
 				))}
 			</div>
+			<div className="Players">
+				<PlayerInfo />
+			</div>
 			{horses.map((h) => (
 				<Card
 					suit={h.suit}
@@ -94,3 +99,4 @@ export default function App() {
 		</div>
 	);
 }
+
