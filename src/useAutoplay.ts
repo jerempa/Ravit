@@ -10,7 +10,7 @@ function useHorseRaceSong() {
 
 	useEffect(() => {
 		setAudioElement(
-			new Audio(`${process.env.PUBLIC_URL}/william-tell-overture.mp3`)
+			new Audio(`${process.env.PUBLIC_URL}/Raikku-laittaa-urut-solmuun.mp3`)
 		);
 	}, []);
 
