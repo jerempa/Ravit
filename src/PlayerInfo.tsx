@@ -64,9 +64,6 @@ function PlayerInfo() {
       <div>
         <button onClick={handleSubmit}>Enter Player</button>
       </div>
-      <div>
-      <button onClick={resetPlayers}>Reset Players</button>
-      </div>
       {players.length > 0 && (
         <div>
           <h3>Players:</h3>
@@ -79,6 +76,11 @@ function PlayerInfo() {
           </ul>
         </div>
       )}
+            <div>
+            <button onClick={resetPlayers} style={{ display: players.length >= 1 ? 'block' : 'none' }}>
+  Reset Players
+</button>
+      </div>
     </div>
   );
 }
