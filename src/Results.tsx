@@ -28,7 +28,7 @@ function Results({winner, color, players}: ResultsProps) {
         <ul>
           {players.map((player, index) => (
             <li key={index}>
-                {player.playerName} ({emojiSuitMap[player.suit]}) {player.suit === winner ? `shares ${player.bet * 2} hörppys` : `drinks ${player.bet} hörppys`}</li>
+                {player.playerName} ({emojiSuitMap[player.suit]}) {emojiSuitMap[player.suit] === winner ? `shares ${player.bet * 2} hörppys` : `drinks ${player.bet} hörppys`}</li>
           ))}
         </ul>
       </div>
