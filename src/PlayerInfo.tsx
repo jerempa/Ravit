@@ -20,9 +20,10 @@ interface Player {
 
 interface PlayerInfoProps {
   onPlayerSubmit: (player: Player) => void;
+  resetPlayers: () => void;
 }
 
-function PlayerInfo({ onPlayerSubmit }: PlayerInfoProps) {
+function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
   const [playerName, setPlayerName] = useState('');
   const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
   const [bet, setBet] = useState(1);
@@ -46,8 +47,9 @@ function PlayerInfo({ onPlayerSubmit }: PlayerInfoProps) {
   };
 
 
-  const resetPlayers = () => {
+  const handleResetPlayers  = () => {
     setPlayers([]);
+    resetPlayers();
   };
 
   return (
@@ -96,7 +98,7 @@ function PlayerInfo({ onPlayerSubmit }: PlayerInfoProps) {
         </div>
       )}
             <div>
-            <button onClick={resetPlayers} style={{ display: players.length >= 1 ? 'block' : 'none' }}>
+            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none' }}>
   Reset Players
 </button>
       </div>

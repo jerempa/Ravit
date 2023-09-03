@@ -56,6 +56,10 @@ export default function App() {
 		setPlayers([...players, newPlayer]);
 	  };
 
+	  const resetPlayers = () => {
+		setPlayers([]);
+	  };
+
 	return (
 		<div className="board">
 			<button onClick={playTurn} disabled={!!isAutoplaying}>
@@ -89,13 +93,6 @@ export default function App() {
 						fontSize: '2rem',
 					}}
 				>
-					{winner ? (
-						<span style={{ color: suitColor(winner.suit) }}>
-							{emojiSuitMap[winner?.suit]} win!
-						</span>
-					) : (
-						'Game over!'
-					)}
 					{winner && <Results winner = {emojiSuitMap[winner?.suit]} color = {suitColor(winner.suit) } players={players}/>
 					}
 				</span>
@@ -106,7 +103,7 @@ export default function App() {
 				))}
 			</div>
 			<div className="Players">
-			<PlayerInfo onPlayerSubmit={handlePlayerSubmit} />
+			<PlayerInfo onPlayerSubmit={handlePlayerSubmit} resetPlayers={resetPlayers} />
 			</div>
 			{horses.map((h) => (
 				<Card

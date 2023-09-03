@@ -27,12 +27,11 @@ function Results({winner, color, players}: ResultsProps) {
         <h2> Results </h2>
         <h3 style={{ color: color }}> Winner: {winner}</h3>
         <div>
-        <h4>Players:</h4>
+        <h4>Amount of drinks:</h4>
         <ul>
           {players.map((player, index) => (
             <li key={index}>
-              {player.playerName}, {player.suit}, {player.bet}
-            </li>
+                {player.playerName} ({player.suit}) {player.suit === winner ? `shares ${player.bet * 2} hörppys` : `drinks ${player.bet} hörppys`}</li>
           ))}
         </ul>
       </div>
