@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './PlayerInfo.css'; 
 
 interface Player {
   playerName: string;
@@ -28,8 +29,8 @@ function PlayerInfo() {
 
 
   return (
-    <div>
-      <h2>Enter Player Information</h2>
+    <div className="player-info">
+      <h2>Enter players</h2>
       <div>
         <input
           type="text"
@@ -59,7 +60,7 @@ function PlayerInfo() {
       </div>
       {players.length > 0 && (
         <div>
-          <h3>Player Info:</h3>
+          <h3>Players:</h3>
           <ul>
             {players.map((player, index) => (
               <li key={index}>
