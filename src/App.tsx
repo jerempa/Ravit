@@ -7,6 +7,8 @@ import { useGame } from './useGame';
 import useAutoplay from './useAutoplay';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import PlayerInfo from './PlayerInfo';
+import Results from './Results';
+
 
 const columns = 8;
 
@@ -68,6 +70,7 @@ export default function App() {
 					) : (
 						'Game over!'
 					)}
+					{winner && <Results winner = {emojiSuitMap[winner?.suit]} />}
 				</span>
 			) : null}
 			<div style={{ display: 'flex' }}>
