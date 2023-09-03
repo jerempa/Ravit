@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Card } from './deck';
 
-const introLength = 13 * 1000;
+const introLength = 7 * 1000;
 
 function useHorseRaceSong() {
 	const [audioElement, setAudioElement] = useState<HTMLAudioElement>();
