@@ -13,13 +13,13 @@ enum Suit {
 interface Player {
   playerName: string;
   suit: Suit;
-  bet: string;
+  bet: number;
 }
 
 function PlayerInfo() {
   const [playerName, setPlayerName] = useState('');
   const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
-  const [bet, setBet] = useState('');
+  const [bet, setBet] = useState(1);
   const [players, setPlayers] = useState<Player[]>([]);
 
   const handleSubmit = () => {
@@ -34,7 +34,7 @@ function PlayerInfo() {
     setPlayers([...players, newPlayer]);
     setPlayerName('');
     setSuit(Suit.clubs);
-    setBet('');
+    setBet(1);
   };
 
   const resetPlayers = () => {
@@ -65,10 +65,10 @@ function PlayerInfo() {
       </div>
       <div>
         <input
-          type="text"
-          placeholder="Bet"
+          type="number"
+          defaultValue= "1"
           value={bet}
-          onChange={(e) => setBet(e.target.value)}
+          onChange={(e) => setBet(parseInt(e.target.value, 10))}
         />
       </div>
       <div>
