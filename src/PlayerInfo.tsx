@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './PlayerInfo.css'; 
+import './PlayerInfo.css';
+import Card, { suitColor, emojiSuitMap } from './Card';
+
 
 interface Player {
   playerName: string;
@@ -21,12 +23,16 @@ function PlayerInfo() {
       bet,
     };
 
+
     setPlayers([...players, newPlayer]);
     setPlayerName('');
     setSuit('');
     setBet('');
   };
 
+  const resetPlayers = () => {
+    setPlayers([]);
+  };
 
   return (
     <div className="player-info">
@@ -57,6 +63,9 @@ function PlayerInfo() {
       </div>
       <div>
         <button onClick={handleSubmit}>Enter Player</button>
+      </div>
+      <div>
+      <button onClick={resetPlayers}>Reset Players</button>
       </div>
       {players.length > 0 && (
         <div>
