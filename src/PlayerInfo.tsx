@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import './PlayerInfo.css';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import Results from './Results';
+import { Suit } from './deck';
 
-
-
-enum Suit {
-  clubs = '♣️',
-  diamonds = '♦️',
-  hearts = '♥️',
-  spades = '♠️',
-}
 
 interface Player {
   playerName: string;
@@ -54,9 +47,9 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
 
   return (
     <div>
-      <h2 style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "40px"}}>Enter players</h2>
+      <h2 style={{ fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "40px"}}>Enter players</h2>
       <div>
-        <input style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "105px"}}
+        <input style={{ fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "105px"}}
           type="text"
           placeholder="Player name"
           value={playerName}
@@ -64,7 +57,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <select style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "170px"}}
+        <select style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "170px"}}
           value={suit}
           onChange={(e) => setSuit(e.target.value as Suit)}
         >
@@ -75,23 +68,23 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </select>
       </div>
       <div>
-        <input style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "235px"}}
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "235px"}}
           type="number"
-          defaultValue= "1"
+          defaultValue= "Bet size"
           value={bet}
           onChange={(e) => setBet(parseInt(e.target.value, 10))}
         />
       </div>
       <div>
-        <button onClick={handleSubmit} style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "300px"}}>Enter Player</button>
+        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "300px"}}>Enter Player</button>
       </div>
       {players.length > 0 && (
         <div className="player-info">
           <h3>Players:</h3>
           <ul>
             {players.map((player, index) => (
-              <li key={index}>
-                {player.playerName}, {player.suit}, {player.bet}
+              <li key={index} style={{ color: suitColor(player.suit) }}>
+                {player.playerName}, {emojiSuitMap[player.suit]}, {player.bet}
               </li>
             ))}
           </ul>

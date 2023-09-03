@@ -8,14 +8,8 @@ import useAutoplay from './useAutoplay';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import PlayerInfo from './PlayerInfo';
 import Results from './Results';
+import { Suit } from './deck';
 
-
-enum Suit {
-	clubs = '♣️',
-	diamonds = '♦️',
-	hearts = '♥️',
-	spades = '♠️',
-  }
 
 interface Player {
 	playerName: string;
@@ -61,11 +55,11 @@ export default function App() {
 	  };
 
 	return (
-		<div className="board">
-			<button onClick={playTurn} disabled={!!isAutoplaying}>
-				Play turn
+		<div className="board" style={{fontSize: "40px"}}>
+			<button onClick={playTurn} disabled={!!isAutoplaying} style={{fontSize: "40px"}}>
+				Play one turn
 			</button>
-			<button
+			<button style={{fontSize: "40px"}}
 				onClick={() => {
 					reset();
 					resetAutoplaying();
@@ -78,9 +72,10 @@ export default function App() {
 				ref={intervalRef}
 				defaultValue="1500"
 				disabled={!!isAutoplaying}
+				style={{fontSize: "40px"}}
 			/>
-			<button onClick={autoplay}>{isAutoplaying ? 'Stop' : 'Play'}</button>
-			<button
+			<button style={{fontSize: "40px"}} onClick={autoplay}>{isAutoplaying ? 'Stop' : 'Auto-Play'}</button>
+			<button style={{fontSize: "40px"}}
 				onClick={() => {
 					resetAutoplaying();
 				}}

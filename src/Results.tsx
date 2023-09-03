@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import './Results.css';
+import { Suit } from './deck';
 
-enum Suit {
-	clubs = '♣️',
-	diamonds = '♦️',
-	hearts = '♥️',
-	spades = '♠️',
-  }
 
 interface Player {
 	playerName: string;
