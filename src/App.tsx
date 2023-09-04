@@ -34,7 +34,7 @@ export default function App() {
 	} = useAutoplay(playedCards, playTurn, deck, intervalRef);
 
 	const gameOver =
-		horses.some((h) => h.position === columns) || deck.length === 0;
+		horses.some((h) => h.position === columns + 1) || deck.length === 0;
 
 	const winner = horses.find((h) => h.position === columns);
 
