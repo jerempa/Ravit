@@ -31,6 +31,7 @@ export default function App() {
 		isAutoplaying,
 		resetAutoplaying,
 		stopAutoplaying,
+		playWinningSong
 	} = useAutoplay(playedCards, playTurn, deck, intervalRef);
 
 	const gameOver =
@@ -43,6 +44,13 @@ export default function App() {
 			resetAutoplaying();
 		}
 	}, [gameOver, stopAutoplaying]);
+
+	useEffect(() => {
+		if (winner && emojiSuitMap[winner?.suit] === "♠️") {
+			console.log("testi")
+			playWinningSong();
+		}
+	});
 
 	const [players, setPlayers] = useState<Player[]>([]);
 
@@ -76,13 +84,6 @@ export default function App() {
 				style={{fontSize: "40px"}}
 			/>
 			<button style={{fontSize: "40px"}} onClick={autoplay}>{isAutoplaying ? 'Stop' : 'Auto-Play'}</button>
-			<button style={{fontSize: "40px"}}
-				onClick={() => {
-					resetAutoplaying();
-				}}
-			>
-				Stop audio
-			</button>
 			{gameOver ? (
 				<span
 					style={{

@@ -17,6 +17,19 @@ function useHorseRaceSong() {
 	return audioElement;
 }
 
+function useWinningSong() {
+	// Note I do not claim to own the song or use it for commercial purposes. The song is owned by Motörhead.
+	const [audioElement, setAudioElement] = useState<HTMLAudioElement>();
+
+	useEffect(() => {
+		setAudioElement(
+			new Audio(`${process.env.PUBLIC_URL}/Winning-song.mp3`)
+		);
+	}, []);
+
+	return audioElement;
+}
+
 export default function useAutoplay(
 	playedCards: Card[],
 	playTurn: () => void,
@@ -24,6 +37,7 @@ export default function useAutoplay(
 	intervalInputRef: React.RefObject<HTMLInputElement>
 ) {
 	const horseRaceAudioElement = useHorseRaceSong();
+	const winningAudioElement = useWinningSong();
 	const [isAutoplaying, setIsAutoplaying] = useState(false);
 	const intervalRef = useRef<NodeJS.Timeout>();
 	const timeoutRef = useRef<NodeJS.Timeout>();
@@ -34,6 +48,14 @@ export default function useAutoplay(
 			clearTimeout(timeoutRef.current as NodeJS.Timeout);
 		},
 		[horseRaceAudioElement]
+	);
+
+	const resetWinningSong = useCallback(
+		function resetWinningSong() {
+			winningAudioElement?.load();
+			clearTimeout(timeoutRef.current as NodeJS.Timeout);
+		},
+		[winningAudioElement]
 	);
 
 	function startAutoplaying() {
@@ -58,6 +80,7 @@ export default function useAutoplay(
 	function resetAutoplaying() {
 		stopAutoplaying();
 		resetIntro();
+		resetWinningSong();
 	}
 
 	useEffect(() => {
@@ -82,10 +105,16 @@ export default function useAutoplay(
 		}
 	}
 
+	function playWinningSong() {
+		console.log("testi")
+		winningAudioElement?.play();
+	}
+
 	return {
 		autoplay,
 		isAutoplaying,
 		resetAutoplaying,
 		stopAutoplaying,
+		playWinningSong
 	};
 }

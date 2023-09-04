@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Results.css';
 import { Suit } from './deck';
 import Card, { suitColor, emojiSuitMap } from './Card';
+import useAutoplay from './useAutoplay';
 
 
 
@@ -18,6 +19,7 @@ interface ResultsProps {
   }
 
 function Results({winner, color, players}: ResultsProps) {
+
 
   return (
     <div className="results">
