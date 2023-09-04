@@ -47,9 +47,9 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
 
   return (
     <div>
-      <h2 style={{ fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "40px"}}>Enter players</h2>
+      <h2 style={{ fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "40px"}}>Enter players</h2>
       <div>
-        <input style={{ fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "105px"}}
+        <input style={{ fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "105px"}}
           type="text"
           placeholder="Player name"
           value={playerName}
@@ -57,7 +57,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <select style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "170px"}}
+        <select style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "170px"}}
           value={suit}
           onChange={(e) => setSuit(e.target.value as Suit)}
         >
@@ -68,7 +68,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </select>
       </div>
       <div>
-        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "235px"}}
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px"}}
           type="number"
           defaultValue= "Bet size"
           value={bet}
@@ -76,7 +76,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "300px"}}>Enter Player</button>
+        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "300px"}}>Enter Player</button>
       </div>
       {players.length > 0 && (
         <div className="player-info">
@@ -91,7 +91,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </div>
       )}
             <div>
-            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1150px", marginTop: "10px", top: "375px"}}>
+            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "375px"}}>
   Reset Players
 </button>
       </div>
