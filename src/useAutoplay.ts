@@ -63,6 +63,7 @@ export default function useAutoplay(
 	useEffect(() => {
 		if (deck.length === 0) {
 			stopAutoplaying();
+			resetIntro();
 		}
 	}, [deck.length, stopAutoplaying]);
 

@@ -36,11 +36,11 @@ export default function App() {
 	const gameOver =
 		horses.some((h) => h.position === columns + 1) || deck.length === 0;
 
-	const winner = horses.find((h) => h.position === columns);
+	const winner = horses.find((h) => h.position === columns + 1);
 
 	useEffect(() => {
 		if (gameOver) {
-			stopAutoplaying();
+			resetAutoplaying();
 		}
 	}, [gameOver, stopAutoplaying]);
 
@@ -53,6 +53,7 @@ export default function App() {
 	  const resetPlayers = () => {
 		setPlayers([]);
 	  };
+	
 
 	return (
 		<div className="board" style={{fontSize: "40px"}}>
