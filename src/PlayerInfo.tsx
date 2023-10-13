@@ -49,7 +49,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
     <div>
       <h2 style={{ fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "40px"}}>Enter players</h2>
       <div>
-        <input style={{ fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "105px"}}
+        <input style={{ fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "105px", width: "400px"}}
           type="text"
           placeholder="Player name"
           value={playerName}
@@ -68,9 +68,10 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </select>
       </div>
       <div>
-        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px"}}
+      <label htmlFor="betSize" style={{ fontSize: "45px", position: "absolute", marginLeft: "1500px", marginTop: "10px", top: "235px"}}>(Bet size)</label>
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px", width: "275px"}}
           type="number"
-          defaultValue= "Bet size"
+          placeholder= "Bet size"
           value={bet}
           onChange={(e) => setBet(parseInt(e.target.value, 10))}
         />

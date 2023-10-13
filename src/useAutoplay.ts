@@ -106,7 +106,6 @@ export default function useAutoplay(
 	}
 
 	function playWinningSong() {
-		console.log("testi")
 		winningAudioElement?.play();
 	}
 

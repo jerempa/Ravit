@@ -47,7 +47,6 @@ export default function App() {
 
 	useEffect(() => {
 		if (winner && emojiSuitMap[winner?.suit] === "♠️") {
-			console.log("testi")
 			playWinningSong();
 		}
 	});
