@@ -17,6 +17,11 @@ interface Player {
 	bet: number;
   }
 
+interface Nickname {
+	nickname: string;
+	suit: Suit;
+} 
+
 const columns = 8;
 
 export default function App() {
@@ -52,6 +57,7 @@ export default function App() {
 	});
 
 	const [players, setPlayers] = useState<Player[]>([]);
+	const [nicknames, setNicknames] = useState<Nickname[]>([]);
 
 	const handlePlayerSubmit = (newPlayer: Player) => {
 		setPlayers([...players, newPlayer]);
@@ -59,7 +65,13 @@ export default function App() {
 
 	  const resetPlayers = () => {
 		setPlayers([]);
+		setNicknames([]);
 	  };
+
+
+	const handleNicknameSubmit = (newNickname: Nickname) => {
+		  setNicknames([...nicknames, newNickname]);
+		};
 	
 
 	return (
@@ -99,7 +111,7 @@ export default function App() {
 				))}
 			</div>
 			<div className="Players">
-			<PlayerInfo onPlayerSubmit={handlePlayerSubmit} resetPlayers={resetPlayers} />
+			<PlayerInfo onPlayerSubmit={handlePlayerSubmit} resetPlayers={resetPlayers} onNicknameSubmit={handleNicknameSubmit} />
 			</div>
 			{horses.map((h) => (
 				<Card

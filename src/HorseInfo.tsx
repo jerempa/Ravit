@@ -31,8 +31,8 @@ function HorseInfo({ }: HorseInfoProps) {
       <h2 style={{ fontSize: "45px", position: "absolute", marginLeft: "1700px", marginTop: "10px", top: "40px"}}>Horse nicknames?!?</h2>
       <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "1650px", marginTop: "60px", top: "40px"}}>♣️</h3>
         <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "1650px", marginTop: "150px", top: "40px", color: "red"}}>♦️</h3>
-        <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "60px", top: "40px", color: "red"}}>♥️</h3>
-        <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "150px", top: "40px"}}>♠️</h3>
+        <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "150px", top: "40px", color: "red"}}>♥️</h3>
+        <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "60px", top: "40px"}}>♠️</h3>
     </div>
   );
 }

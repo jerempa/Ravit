@@ -12,16 +12,26 @@ interface Player {
   bet: number;
 }
 
+interface Nickname {
+  nickname: string;
+  suit: Suit;
+}
+
 interface PlayerInfoProps {
   onPlayerSubmit: (player: Player) => void;
   resetPlayers: () => void;
+  onNicknameSubmit: (nickname: Nickname) => void;
+
 }
 
-function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
+function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInfoProps) {
   const [playerName, setPlayerName] = useState('');
   const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
   const [bet, setBet] = useState(1);
   const [players, setPlayers] = useState<Player[]>([]);
+  const [nickname, setNickname] = useState('');
+  const [nicknames, setNicknames] = useState<Nickname[]>([]);
+
 
   const handleSubmit = () => {
 
@@ -31,8 +41,16 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
       bet,
     };
 
-    onPlayerSubmit(newPlayer);
+    const newNickname = {
+      nickname,
+      suit,
+    };
 
+    onPlayerSubmit(newPlayer);
+    onNicknameSubmit(newNickname);
+
+    setNicknames([...nicknames, newNickname]);
+    setNickname('');
     setPlayers([...players, newPlayer]);
     setPlayerName('');
     setSuit(Suit.clubs);
@@ -69,8 +87,16 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </select>
       </div>
       <div>
-      <label htmlFor="betSize" style={{ fontSize: "45px", position: "absolute", marginLeft: "1500px", marginTop: "10px", top: "235px"}}>(Bet size)</label>
-        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px", width: "275px"}}
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px", width: "400px"}}
+          type="text"
+          placeholder="Horse nickname"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        />
+      </div>
+      <div>
+      <label htmlFor="betSize" style={{ fontSize: "45px", position: "absolute", marginLeft: "1500px", marginTop: "10px", top: "300px"}}>(Bet size)</label>
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "300px", width: "275px"}}
           type="number"
           placeholder= "Bet size"
           value={bet}
@@ -78,7 +104,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         />
       </div>
       <div>
-        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "300px"}}>Enter Player</button>
+        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "360px"}}>Enter Player</button>
       </div>
       {players.length > 0 && (
         <div className="player-info">
@@ -93,7 +119,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
         </div>
       )}
             <div>
-            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "375px"}}>
+            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "440px"}}>
   Reset Players
 </button>
 <Horse nicknames="Testi"/>
