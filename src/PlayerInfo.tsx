@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './PlayerInfo.css';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import Results from './Results';
+import Horse from './HorseInfo';
 import { Suit } from './deck';
 
 
@@ -95,6 +96,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers }: PlayerInfoProps) {
             <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "375px"}}>
   Reset Players
 </button>
+<Horse nicknames="Testi"/>
       </div>
     </div>
   );
