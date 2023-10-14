@@ -5,25 +5,16 @@ import Results from './Results';
 import { Suit } from './deck';
 
 
-interface Player {
-  playerName: string;
-  suit: Suit;
-  bet: number;
-}
-interface Horse {
-  suit: Suit;
+interface Nickname {
   nickname: string;
+  suit: Suit;
 }
 
 interface HorseInfoProps {
-    nicknames: string;
+    nicknames: Nickname[];
 }
 
-function HorseInfo({ }: HorseInfoProps) {
-  const [playerName, setPlayerName] = useState('');
-  const [suit, setSuit] = useState<Suit>(Suit.clubs); // Default to clubs
-  const [bet, setBet] = useState(1);
-  const [players, setPlayers] = useState<Player[]>([]);
+function HorseInfo({ nicknames }: HorseInfoProps) {
 
 
   return (
@@ -33,6 +24,20 @@ function HorseInfo({ }: HorseInfoProps) {
         <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "1650px", marginTop: "150px", top: "40px", color: "red"}}>♦️</h3>
         <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "150px", top: "40px", color: "red"}}>♥️</h3>
         <h3 style={{ fontSize: "85px", position: "absolute", marginLeft: "2000px", marginTop: "60px", top: "40px"}}>♠️</h3>
+        <div>
+        {nicknames.length > 0 && (
+        <div className="horse-info">
+          <h3>Horse Nicknames:</h3>
+          <ul>
+          {nicknames.map((nickname, index) => (
+              <li key={index} style={{ color: suitColor(nickname.suit) }}>
+                {nickname.nickname}, {emojiSuitMap[nickname.suit]}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      </div>
     </div>
   );
 }

@@ -59,6 +59,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInf
   };
 
 
+
   const handleResetPlayers  = () => {
     setPlayers([]);
     resetPlayers();
@@ -122,7 +123,6 @@ function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInf
             <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "440px"}}>
   Reset Players
 </button>
-<Horse nicknames="Testi"/>
       </div>
     </div>
   );

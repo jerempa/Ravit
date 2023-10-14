@@ -7,6 +7,7 @@ import { useGame } from './useGame';
 import useAutoplay from './useAutoplay';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import PlayerInfo from './PlayerInfo';
+import HorseInfo from './HorseInfo';
 import Results from './Results';
 import { Suit } from './deck';
 
@@ -20,7 +21,7 @@ interface Player {
 interface Nickname {
 	nickname: string;
 	suit: Suit;
-} 
+  }
 
 const columns = 8;
 
@@ -105,6 +106,7 @@ export default function App() {
 					}
 				</span>
 			) : null}
+			<HorseInfo nicknames={nicknames} />
 			<div style={{ display: 'flex' }}>
 				{range(0, columns + 1).map((n) => (
 					<div className="column-header">{n}</div>
