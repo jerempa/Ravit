@@ -87,17 +87,17 @@ function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInf
           <option value={Suit.spades}>♠️ Spades</option>
         </select>
       </div>
-      <div>
+      {/*<div>
         <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px", width: "400px"}}
           type="text"
           placeholder="Horse nickname"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
-      </div>
+      </div> */}
       <div>
-      <label htmlFor="betSize" style={{ fontSize: "45px", position: "absolute", marginLeft: "1500px", marginTop: "10px", top: "300px"}}>(Bet size)</label>
-        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "300px", width: "275px"}}
+      <label htmlFor="betSize" style={{ fontSize: "45px", position: "absolute", marginLeft: "1500px", marginTop: "10px", top: "235px"}}>(Bet size)</label>
+        <input style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "235px", width: "275px"}}
           type="number"
           placeholder= "Bet size"
           value={bet}
@@ -105,7 +105,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInf
         />
       </div>
       <div>
-        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "360px"}}>Enter Player</button>
+        <button onClick={handleSubmit} style={{fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "300px"}}>Enter Player</button>
       </div>
       {players.length > 0 && (
         <div className="player-info">
@@ -120,7 +120,7 @@ function PlayerInfo({onPlayerSubmit, resetPlayers, onNicknameSubmit }: PlayerInf
         </div>
       )}
             <div>
-            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "440px"}}>
+            <button onClick={handleResetPlayers } style={{ display: players.length >= 1 ? 'block' : 'none', fontSize: "45px", position: "absolute", marginLeft: "1200px", marginTop: "10px", top: "365px"}}>
   Reset Players
 </button>
       </div>
