@@ -30,6 +30,7 @@ export default function App() {
 		columns,
 	});
 	const intervalRef = useRef<HTMLInputElement>(null);
+	// 			<HorseInfo nicknames={nicknames} />
 
 
 	const {
@@ -102,11 +103,10 @@ export default function App() {
 						fontSize: '2rem',
 					}}
 				>
-					{winner && <Results winner = {emojiSuitMap[winner?.suit]} color = {suitColor(winner.suit) } players={players}/>
+					{winner && <Results winner = {emojiSuitMap[winner?.suit]} color = {suitColor(winner.suit) } players={players} cards={deck.length}/>
 					}
 				</span>
 			) : null}
-			<HorseInfo nicknames={nicknames} />
 			<div style={{ display: 'flex' }}>
 				{range(0, columns + 1).map((n) => (
 					<div className="column-header">{n}</div>

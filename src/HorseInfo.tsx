@@ -5,6 +5,7 @@ import Results from './Results';
 import { Suit } from './deck';
 
 
+
 interface Nickname {
   nickname: string;
   suit: Suit;

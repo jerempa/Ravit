@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
 import './Results.css';
 import { Suit } from './deck';
-import Card, { suitColor, emojiSuitMap } from './Card';
-import useAutoplay from './useAutoplay';
-
+import { emojiSuitMap } from './Card';
 
 
 interface Player {
@@ -15,16 +12,17 @@ interface Player {
 interface ResultsProps {
     winner: string;
     color: string;
-    players: Player[]; 
+    players: Player[];
+    cards: number; 
   }
 
-function Results({winner, color, players}: ResultsProps) {
+function Results({winner, color, players, cards}: ResultsProps) {
 
 
   return (
     <div className="results">
         <h3> Results: </h3>
-        <h3 style={{ color: color }}> Winner: {winner}</h3>
+        <h3 style={{ color: color }}>  {cards === 0 ? 'Tie! Everyone drinks.' : `Winner: ${winner}`}</h3>
         <div>
         <h4>Amount of drinks:</h4>
         <ul>
