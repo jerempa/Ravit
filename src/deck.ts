@@ -1,4 +1,4 @@
-import { range, shuffle } from 'lodash';
+const lodash = require("lodash");
 
 export enum Suit {
 	clubs = 'clubs',
@@ -18,8 +18,8 @@ export function allSuits(): Suit[] {
 
 export function shuffledDeck(): Card[] {
 	const cards = allSuits().flatMap((s) =>
-		range(2, 14).map((v) => ({ suit: s, value: v }))
+	lodash.range(2, 14).map((v: number) => ({ suit: s, value: v }))
 	);
 
-	return shuffle(cards);
+	return lodash.shuffle(cards);
 }

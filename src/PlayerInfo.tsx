@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './PlayerInfo.css';
-import Card, { suitColor, emojiSuitMap } from './Card';
-import Results from './Results';
-import Horse from './HorseInfo';
+import { suitColor, emojiSuitMap } from './Card';
 import { Suit } from './deck';
 
 

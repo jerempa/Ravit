@@ -1,7 +1,7 @@
-import { toNumber } from 'lodash';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Card } from './deck';
+const lodash = require("lodash");
 
 const introLength = 7 * 1000;
 
@@ -61,7 +61,7 @@ export default function useAutoplay(
 	function startAutoplaying() {
 		intervalRef.current = setInterval(
 			playTurn,
-			toNumber(intervalInputRef.current!.value)
+			lodash.toNumber(intervalInputRef.current!.value)
 		);
 		playTurn();
 	}

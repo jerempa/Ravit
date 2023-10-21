@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from 'react';
-import { range } from 'lodash';
 
 import './App.css';
 
@@ -7,9 +6,11 @@ import { useGame } from './useGame';
 import useAutoplay from './useAutoplay';
 import Card, { suitColor, emojiSuitMap } from './Card';
 import PlayerInfo from './PlayerInfo';
-import HorseInfo from './HorseInfo';
 import Results from './Results';
 import { Suit } from './deck';
+
+const lodash = require("lodash");
+
 
 
 interface Player {
@@ -108,7 +109,7 @@ export default function App() {
 				</span>
 			) : null}
 			<div style={{ display: 'flex' }}>
-				{range(0, columns + 1).map((n) => (
+				{lodash.range(0, columns + 1).map((n: number) => (
 					<div className="column-header">{n}</div>
 				))}
 			</div>

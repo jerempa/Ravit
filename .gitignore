@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.node-version
+.nvmrc
+.fly.toml
 
 # testing
 /coverage

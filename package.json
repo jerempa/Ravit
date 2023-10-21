@@ -7,14 +7,12 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.4",
-    "@types/node": "^20.5.9",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "typescript": "^5.2.2",
+    "typescript": "^4.9.5",
     "web-vitals": "^3.4.0",
     "yarn": "^1.22.19"
   },
@@ -44,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.197"
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.8.7",
+    "lodash": "^4.17.21"
   }
 }
